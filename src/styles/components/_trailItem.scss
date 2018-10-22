@@ -1,0 +1,50 @@
+.trailListItem{
+    height: 370px; 
+    border-radius: 5px;
+    margin-bottom: $xl-size;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15)
+}
+
+.trailListItem__body {
+    height: 35%;
+    padding: 10px;
+}
+
+.trailListItem__img{
+    border-radius: 5px 5px 0 0;
+    height: 65%;
+    background-repeat: no-repeat !important;
+    background-size: 100% 100% !important;
+}
+.trailListItem__body ul {
+    padding: $xs-size 0;
+}
+.trailListItem__body ul li{
+    font-size: $s-size;
+    display: inline-block;
+    padding-right: $xs-size 
+}
+.trailListItem__body__label{
+    color: $blue-grey;
+    font-size: $xs-size;
+}
+
+.modal__img{
+    height: 330px;
+    background-repeat: no-repeat !important;
+    background-size: 100% 100% !important;
+}
+.modal__body{
+    padding: $l-size
+}
+.modal__body ul {
+    padding: $l-size 0
+}
+.modal__body ul li{
+    font-size: $m-size;
+    display: inline-block;
+    padding-right: $m-size 
+}
+.modal__body__description{
+    padding-bottom: 30px
+}
