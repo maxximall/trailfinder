@@ -57,4 +57,5 @@ const mapStateToProps = (state) => ({
     isAuthanticated: !!state.auth.uid
 });
 
+
 export default connect(mapStateToProps)(TrailListItem);

@@ -7,7 +7,7 @@ import {startLogout} from '../actions/auth';
 
 const Footer = ({startLogout, isAuthenticated}) => (
     <div className="footer">
-        <p>Created by <Link to="https://github.com/maxximall">Max</Link></p>
+        <p>Created by Max</p>
         {isAuthenticated ? 
             (
                 null
