@@ -12,9 +12,9 @@ const TrailListItem = ({id, name, location, duration, difficulty, imageURL, desc
                 <h3 className="bold">{name}</h3>
             
                 <ul>
-                    <li><span className="trailListItem__body__label">Location: </span>{location}</li>
-                    <li><span className="trailListItem__body__label">Duration: </span>{actualLength}</li>
-                    <li><span className="trailListItem__body__label">Difficulty: </span>{difficulty}</li>
+                    <li><span className="trailListItem__body__label"><i className="fas fa-compass"></i>{location}</span></li>
+                    <li><span className="trailListItem__body__label"><i className="fas fa-clock"></i>{actualLength}</span></li>
+                    <li><span className="trailListItem__body__label"><i className="fas fa-mountain"></i>{difficulty}</span></li>
                 </ul>
             </div>
               
