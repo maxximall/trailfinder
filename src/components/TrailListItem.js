@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 
-const TrailListItem = ({id, name, location, duration, difficulty, imageURL, description, isAuthanticated}) => (
+const TrailListItem = ({id, name, location, duration, difficulty, imageURL, description, actualLength, isAuthanticated}) => (
     <div>
         <div data-toggle="modal" data-target={`#${id}`} className="trailListItem" > 
             <div className="trailListItem__img" style={{background: 'url('+imageURL+')'}}>
@@ -13,7 +13,7 @@ const TrailListItem = ({id, name, location, duration, difficulty, imageURL, desc
             
                 <ul>
                     <li><span className="trailListItem__body__label">Location: </span>{location}</li>
-                    <li><span className="trailListItem__body__label">Duration: </span>{duration}</li>
+                    <li><span className="trailListItem__body__label">Duration: </span>{actualLength}</li>
                     <li><span className="trailListItem__body__label">Difficulty: </span>{difficulty}</li>
                 </ul>
             </div>
@@ -39,7 +39,7 @@ const TrailListItem = ({id, name, location, duration, difficulty, imageURL, desc
 
                         <h2 className="bold">{name}</h2>
                         <ul>
-                            <li><span className="bold">Duration: </span>{duration} </li>
+                            <li><span className="bold">Duration: </span>{actualLength} </li>
                             <li><span className="bold">Difficulty: </span>{difficulty} </li>
                         </ul>
                         <p className="modal__body__description"> {description}</p>

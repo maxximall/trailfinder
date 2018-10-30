@@ -9,14 +9,16 @@ const FiltersList = (props) => (
             props.dispatch(setTextFilter(e.target.value))
         }} />
         <div className="filters__block">
-            <label>Location</label>
+            <label>Region</label>
             <select className="filters__filter" onChange={(e)=>{
                 props.dispatch(setLocation(e.target.value));
             }}>
-                <option value="">Any</option>    
+                <option value="">Any Region</option>    
                 <option value="Europe">Europe</option>
                 <option value="Asia">Asia</option>
                 <option value="Africa">Africa</option>
+                <option value="Americas">Americas</option>
+                <option value="Oceania">Oceania</option>
             </select>
         </div>
         
@@ -25,10 +27,11 @@ const FiltersList = (props) => (
             <select className="filters__filter" onChange={(e)=>{
                 props.dispatch(setDuration(e.target.value));
             }}> 
-                <option value="">Any</option> 
-                <option value="short">short</option>
-                <option value="medium">medium</option>
-                <option value="long">long</option>
+                <option value="">Any Length</option>
+                <option value="dayhike">day hike</option>  
+                <option value="short">short (1-3 days)</option>
+                <option value="medium">medium (4-14 days)</option>
+                <option value="long">long (>14 days)</option>
             </select>
         </div>
         
@@ -37,7 +40,7 @@ const FiltersList = (props) => (
             <select className="filters__filter" onChange={(e)=>{
                 props.dispatch(setDifficulty(e.target.value));
             }}>
-                <option value="">Any</option> 
+                <option value="">Any Difficulty</option> 
                 <option value="easy">easy</option>
                 <option value="medium">medium</option>
                 <option value="hard">hard</option>

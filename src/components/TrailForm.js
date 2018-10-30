@@ -14,6 +14,7 @@ export default class TrailForm extends React.Component {
             image: props.trail ? props.trail.image : '',
             description: props.trail ? props.trail.description : '',
             imageURL: props.trail ? props.trail.imageURL : '',
+            actualLength: props.trail ? props.trail.actualLength : '',
             error: '',
             isUploading: false,
             progress: 0,
@@ -31,6 +32,7 @@ export default class TrailForm extends React.Component {
         this.handleProgress = this.handleProgress.bind(this);
         this.handleUploadError = this.handleUploadError.bind(this);
         this.handleUploadSuccess = this.handleUploadSuccess.bind(this);
+        this.onActualLengthChange = this.onActualLengthChange.bind(this);
     };
     onFormSubmit(e){
         e.preventDefault();
@@ -46,7 +48,8 @@ export default class TrailForm extends React.Component {
                 difficulty: this.state.difficulty,
                 image: this.state.image,
                 description: this.state.description,
-                imageURL: this.state.imageURL
+                imageURL: this.state.imageURL,
+                actualLength: this.state.actualLength
             })
         }        
     };
@@ -75,6 +78,10 @@ export default class TrailForm extends React.Component {
         const description = e.target.value;
         this.setState(()=>({description}))
     }
+    onActualLengthChange(e){
+        const actualLength = e.target.value;
+        this.setState(()=>({actualLength}))
+    }
     
     handleUploadStart = () => this.setState({isUploading: true, progress: 0});
 
@@ -97,18 +104,23 @@ export default class TrailForm extends React.Component {
                 <form onSubmit={this.onFormSubmit} >
                     <input type='text' placeholder='Name'  value={this.state.name} onChange={this.onNameChange} />
                     <select value={this.state.location} onChange={this.onLocationChange}>
-                        <option value="">Any</option>    
+                        <option value="">Any Region</option>    
                         <option value="Europe">Europe</option>
                         <option value="Asia">Asia</option>
                         <option value="Africa">Africa</option>
+                        <option value="Americas">Americas</option>
+                        <option value="Oceania">Oceania</option>
                     </select>
                     <select value={this.state.duration} onChange={this.onDurationChange}> 
-                        <option value="">Any</option> 
-                        <option value="short">short</option>
-                        <option value="medium">medium</option>
-                        <option value="long">long</option>
+                        <option value="">Any Length</option>
+                        <option value="dayhike">day hike</option>  
+                        <option value="short">short (1 - 3 days)</option>
+                        <option value="medium">medium (4 - 14 days)</option>
+                        <option value="long">long ( > 14 days)</option>
                     </select>
-            
+
+                    <input type='text' placeholder='actual length' value={this.state.actualLength} onChange={this.onActualLengthChange} />
+
                     <select value={this.state.difficulty} onChange={this.onDifficultyChange}>
                         <option value="">Any</option> 
                         <option value="easy">easy</option>
