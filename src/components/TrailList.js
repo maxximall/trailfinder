@@ -5,16 +5,43 @@ import getFilteredTrails from '../selectors/trails';
 import 'bootstrap';
 
 
-const TrailList = (props) => (
-    <div className="row">
-        {props.trails.map((trail)=>(
-            <div className="col-4">
-                <TrailListItem key={trail.id} {...trail}/>
+class TrailList extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            limit: 9
+        }
+        this.onLoadMore = this.onLoadMore.bind(this);
+    }
+
+    onLoadMore = () =>{
+        this.setState(()=>({limit: this.state.limit + 6}));
+        
+    }
+
+    render() {
+        console.log(this.state.limit)
+        return (
+            <div>
+                <div className="row">
+                {this.props.trails.slice(0, this.state.limit).map((trail)=>(
+                    <div className="col-4">
+                        <TrailListItem key={trail.id } {...trail} />
+                    </div>
+                ))}
+                </div>
+                <div className="text-center">
+                    <button onClick={this.onLoadMore}>Load More</button>
+                </div>  
             </div>
-            
-        ))}
-    </div>   
-);
+           
+        )
+    }
+    
+}
+    
+    
+
 const mapStateToProps = (state) => {
     return {
         trails: getFilteredTrails(state.trails, state.filters)

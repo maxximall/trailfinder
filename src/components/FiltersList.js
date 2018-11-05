@@ -4,6 +4,7 @@ import {setTextFilter, setLocation, setDuration, setDifficulty} from '../actions
 
 const FiltersList = (props) => (
     <div className="filters" >
+    
         <input className="filters__filter" type='text' placeholder="Search" onChange={(e)=>{
             //props = state
             props.dispatch(setTextFilter(e.target.value))
