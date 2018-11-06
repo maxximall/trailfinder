@@ -46,7 +46,7 @@ export default class TrailForm extends React.Component {
                 location: this.state.location,
                 duration: this.state.duration,
                 difficulty: this.state.difficulty,
-                image: this.state.image,
+                image: this.state.image?  this.state.image : ' ',
                 description: this.state.description,
                 imageURL: this.state.imageURL,
                 actualLength: this.state.actualLength

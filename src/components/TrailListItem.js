@@ -5,8 +5,8 @@ import {connect} from 'react-redux';
 const TrailListItem = ({id, name, location, duration, difficulty, imageURL, description, actualLength, isAuthanticated}) => (
     <div>
         <div data-toggle="modal" data-target={`#${id}`} className="trailListItem" > 
-           
-            <div className="trailListItem__img" style={{background: 'url('+imageURL+')'}}>
+
+            <div className="trailListItem__img" style={{background:  'linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),url('+imageURL+')'}}>
             </div> 
 
             <div className="trailListItem__body">
