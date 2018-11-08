@@ -15,6 +15,7 @@ export default class TrailForm extends React.Component {
             description: props.trail ? props.trail.description : '',
             imageURL: props.trail ? props.trail.imageURL : '',
             actualLength: props.trail ? props.trail.actualLength : '',
+            distance: props.trail ? props.trail.distance : '',
             error: '',
             isUploading: false,
             progress: 0,
@@ -33,6 +34,7 @@ export default class TrailForm extends React.Component {
         this.handleUploadError = this.handleUploadError.bind(this);
         this.handleUploadSuccess = this.handleUploadSuccess.bind(this);
         this.onActualLengthChange = this.onActualLengthChange.bind(this);
+        this.onDistanceChange = this.onDistanceChange.bind(this);
     };
     onFormSubmit(e){
         e.preventDefault();
@@ -49,7 +51,8 @@ export default class TrailForm extends React.Component {
                 image: this.state.image?  this.state.image : ' ',
                 description: this.state.description,
                 imageURL: this.state.imageURL,
-                actualLength: this.state.actualLength
+                actualLength: this.state.actualLength,
+                distance: this.state.distance
             })
         }        
     };
@@ -81,6 +84,11 @@ export default class TrailForm extends React.Component {
     onActualLengthChange(e){
         const actualLength = e.target.value;
         this.setState(()=>({actualLength}))
+    }
+
+    onDistanceChange(e){
+        const distance = e.target.value;
+        this.setState(()=>({distance}))
     }
     
     handleUploadStart = () => this.setState({isUploading: true, progress: 0});
@@ -119,7 +127,9 @@ export default class TrailForm extends React.Component {
                         <option value="long">long ( > 14 days)</option>
                     </select>
 
-                    <input type='text' placeholder='actual length' value={this.state.actualLength} onChange={this.onActualLengthChange} />
+                    <input type='text' placeholder='actual distance (km)' value={this.state.distance} onChange={this.onDistanceChange} />                    
+
+                    <input type='text' placeholder='actual duration (time)' value={this.state.actualLength} onChange={this.onActualLengthChange} />
 
                     <select value={this.state.difficulty} onChange={this.onDifficultyChange}>
                         <option value="">Any</option> 
