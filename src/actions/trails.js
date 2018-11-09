@@ -9,7 +9,7 @@ export const addTrail = (trail) => ({
     trail
 });
 
-export const startAddTrail = ({name='', location='', duration='', difficulty='', description='', imageURL='' ,actualLength=''} = {}) => {
+export const startAddTrail = ({name='', location='', duration='', difficulty='', description='', imageURL='' ,actualLength='', distance= '' , country=''} = {}) => {
     const trail = {
         name: name,
         location: location,
@@ -17,7 +17,9 @@ export const startAddTrail = ({name='', location='', duration='', difficulty='',
         difficulty: difficulty,
         description: description,
         imageURL: imageURL,
-        actualLength: actualLength
+        actualLength: actualLength,
+        distance: distance,
+        country: country
     }
     return(dispatch) => {
         //push returns a 'firebase.database.ThenableReference' which is an object conainting several properties including 'key'

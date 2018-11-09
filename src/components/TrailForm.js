@@ -16,6 +16,7 @@ export default class TrailForm extends React.Component {
             imageURL: props.trail ? props.trail.imageURL : '',
             actualLength: props.trail ? props.trail.actualLength : '',
             distance: props.trail ? props.trail.distance : '',
+            country: props.trail ? props.trail.country: '',
             error: '',
             isUploading: false,
             progress: 0,
@@ -35,6 +36,7 @@ export default class TrailForm extends React.Component {
         this.handleUploadSuccess = this.handleUploadSuccess.bind(this);
         this.onActualLengthChange = this.onActualLengthChange.bind(this);
         this.onDistanceChange = this.onDistanceChange.bind(this);
+        this.onCountryChange = this.onCountryChange.bind(this)
     };
     onFormSubmit(e){
         e.preventDefault();
@@ -52,7 +54,8 @@ export default class TrailForm extends React.Component {
                 description: this.state.description,
                 imageURL: this.state.imageURL,
                 actualLength: this.state.actualLength,
-                distance: this.state.distance
+                distance: this.state.distance ? this.state.distance : ' ',
+                country: this.state.country ? this.state.country : ' '
             })
         }        
     };
@@ -90,6 +93,11 @@ export default class TrailForm extends React.Component {
         const distance = e.target.value;
         this.setState(()=>({distance}))
     }
+
+    onCountryChange(e){
+        const country = e.target.value;
+        this.setState(()=>({country}))
+    }
     
     handleUploadStart = () => this.setState({isUploading: true, progress: 0});
 
@@ -110,7 +118,11 @@ export default class TrailForm extends React.Component {
             <div>
                 <p>{this.state.error}</p>
                 <form onSubmit={this.onFormSubmit} >
+
                     <input type='text' placeholder='Name'  value={this.state.name} onChange={this.onNameChange} />
+
+                    <input type='text' placeholder='Country'  value={this.state.country} onChange={this.onCountryChange} />
+
                     <select value={this.state.location} onChange={this.onLocationChange}>
                         <option value="">Any Region</option>    
                         <option value="Europe">Europe</option>
