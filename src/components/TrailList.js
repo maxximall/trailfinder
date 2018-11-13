@@ -20,7 +20,6 @@ class TrailList extends React.Component {
     }
 
     render() {
-        console.log(this.state.limit)
         return (
             <div>
                 <div className="row">

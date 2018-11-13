@@ -4,7 +4,8 @@ const defaultFiltersReducer = {
     location: '',
     duration: '',
     difficulty: '',
-    text: ''
+    text: '',
+    durationRange: { min: 0, max: 15 }
 }
 
 const filtersReducer = (state = defaultFiltersReducer, action) => {
@@ -28,6 +29,11 @@ const filtersReducer = (state = defaultFiltersReducer, action) => {
             return {
                 ...state,
                 difficulty: action.difficulty
+            }
+        case 'SET_DURATION_RANGE':
+            return {
+                ...state,
+                durationRange: action.durationRange
             }
         default:
             return state

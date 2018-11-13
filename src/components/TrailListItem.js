@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 
-const TrailListItem = ({id, name, location, duration, difficulty, imageURL, description, actualLength, isAuthanticated, distance, country}) => (
+const TrailListItem = ({id, name, location, duration, difficulty, imageURL, description, actualLength, isAuthanticated, distance, country, durationGroup, minDuration, maxDuration}) => (
     <div>
         <div data-toggle="modal" data-target={`#${id}`} className="trailListItem" > 
 
@@ -14,7 +14,7 @@ const TrailListItem = ({id, name, location, duration, difficulty, imageURL, desc
             
                 <ul>
                     <li><span className="trailListItem__body__label"><i className="fas fa-compass"></i>{country}</span></li>
-                    <li><span className="trailListItem__body__label"><i className="fas fa-clock"></i>{actualLength}</span></li>
+                    <li><span className="trailListItem__body__label"><i className="fas fa-clock"></i>{(maxDuration? minDuration +'-'+ maxDuration : minDuration) +' ' + durationGroup}</span></li>
                     <li><span className="trailListItem__body__label"><i className="fas fa-mountain"></i>{difficulty}</span></li>
                 </ul>
             </div>
