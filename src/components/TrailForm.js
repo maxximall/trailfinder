@@ -10,7 +10,8 @@ export default class TrailForm extends React.Component {
             name: props.trail ? props.trail.name : '',
             location: props.trail ? props.trail.location : '',
             duration: props.trail ? props.trail.duration : '',
-            difficulty: props.trail ? props.trail.difficulty : '',
+            //difficulty: props.trail ? [props.trail.difficulty] : [],
+            difficulty: props.trail ? props.trail.difficulty : {easy:false, medium: false, hard: false},
             image: props.trail ? props.trail.image : '',
             description: props.trail ? props.trail.description : '',
             imageURL: props.trail ? props.trail.imageURL : '',
@@ -82,8 +83,15 @@ export default class TrailForm extends React.Component {
         this.setState(()=>({duration}));
     }
     onDifficultyChange(e){
-        const difficulty = e.target.value;
-        this.setState(()=>({difficulty}));
+        const options = {...this.state.difficulty};
+        let option = e.target.value;
+        
+        this.setState((prevState)=>({difficulty:{
+                ...prevState.difficulty,
+                [option]:!options[option]
+            }
+        }))
+       
     }
     onImageChange(e){
         const image = e.target.value;
@@ -184,6 +192,14 @@ export default class TrailForm extends React.Component {
                         <option value="medium">medium</option>
                         <option value="hard">hard</option>
                     </select>
+
+                    <fieldset value={this.state.difficulty} onChange={this.onDifficultyChange}>
+                        <input type="checkbox" value="easy" defaultChecked={this.state.difficulty['easy']}/>
+                        <input type="checkbox" value="medium" defaultChecked={this.state.difficulty['medium']}/>
+                        <input type="checkbox" value="hard" defaultChecked={this.state.difficulty['hard']}/>
+                    </fieldset>
+                    
+
                     <textarea type='text' rows="8" cols="100" value={this.state.description} onChange={this.onDescriptionChange}></textarea>
                                     
                     {this.state.isUploading &&
