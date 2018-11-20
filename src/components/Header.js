@@ -2,24 +2,25 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {NavLink} from 'react-router-dom';
 import {startLogout} from '../actions/auth';
+import Search from '../components/Search';
 
 
 const Header = ({startLogout, isAuthenticated}) => (
-    <div>
-        <h1 className="text-center bold">TrailFinder</h1>
-        
-        {isAuthenticated ? 
-            (
-                <div>
-                    <NavLink to='/create' activeClassName="is-active">Add New</NavLink>
-                    <button onClick={startLogout}>Log out</button>
-                </div>
-            ):(
-               null
-            )
-        }
-        
-               
+    <div className='header'>
+        <div className='container'>
+            <img src='./img/logo.png' className='logo'/><span className='logo-text'>TrailFinder</span>
+            <Search />
+            {isAuthenticated ? 
+                (
+                    <div>
+                        <NavLink to='/create' activeClassName="is-active">Add New</NavLink>
+                        <a onClick={startLogout}>Log out</a>
+                    </div>
+                ):(
+                null
+                )
+            }
+        </div>      
     </div>
 )
 const mapDispatchToProps = (dispatch) => ({

@@ -2,26 +2,70 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {setTextFilter, setLocation, setDuration, setDifficulty, setDurationRange} from '../actions/filters';
 import InputRange from 'react-input-range';
-import 'react-input-range/lib/css/index.css'
+import SelectedFilters from './SelectedFilters';
+import 'react-input-range/lib/css/index.css';
+import '../functions/dropdown';
 
 class FiltersList extends React.Component {
     constructor(props){
         super(props);
         this.state = {
             value: { min: 0, max: 15 },
+            difficulty: {easy: false, medium: false, hard: false}
           };
     }
     render() {
         return (
-            <div className="filters" >
+            <div>
+                <div class="dropdown">
+                    <a className="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Difficulty
+                    </a>
+                    <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <fieldset  onChange={(e)=>{
+                            const options = {...this.state.difficulty};
+                            let option = e.target.value;
+
+                            this.setState(()=>({difficulty:{
+                                        ...this.state.difficulty,
+                                        [option]:!options[option]
+                                    }
+                                }
+                            ), () => {this.props.dispatch(setDifficulty(this.state.difficulty));});
+                            
+                            
+                        }}>
+                            <label className="checkbox-container">Easy
+                                <input type="checkbox" name="easy" value="easy"/>
+                                <span className="checkmark"></span>
+                            </label>
+                            
+                            <label for="medium">Medium</label>
+                            <input type="checkbox" name="medium" value="medium" />
+                            <label for="hard" >Hard</label>
+                            <input type="checkbox"  name="hard" value="hard" />
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a className="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Length
+                    </a>
+                    <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <InputRange
+                        maxValue={20}
+                        minValue={0}
+                        value={this.state.value}
+                        onChange={(value)=> {
+                            this.setState({ value });
+                            this.props.dispatch(setDurationRange(value))
+                        }
+                    } />
+                    </div>
+                </div>
             
-                 <input className="filters__filter" type='text' placeholder="Search" onChange={(e)=>{
-                     //props = state
-                     this.props.dispatch(setTextFilter(e.target.value))
-                 }} />
-                 <div className="filters__block">
-                     <label>Region</label>
-                     <select className="filters__filter" onChange={(e)=>{
+                 <div className="filters__block" >
+                     <select onChange={(e)=>{
                          this.props.dispatch(setLocation(e.target.value));
                      }}>
                          <option value="">Any Region</option>    
@@ -33,40 +77,8 @@ class FiltersList extends React.Component {
                      </select>
                  </div>
                  
-                 <div className="filters__block">
-                     <label>Length</label>
-                     <select className="filters__filter" onChange={(e)=>{
-                         this.props.dispatch(setDuration(e.target.value));
-                     }}> 
-                         <option value="">Any Length</option>
-                         <option value="dayhike">day hike</option>  
-                         <option value="short">short (1-3 days)</option>
-                         <option value="medium">medium (4-14 days)</option>
-                         <option value="long">long (>14 days)</option>
-                     </select>
-                 </div>
-                 
-                 <div className="filters__block">
-                     <label>Difficulty</label>
-                     <select className="filters__filter" onChange={(e)=>{
-                         this.props.dispatch(setDifficulty(e.target.value));
-                     }}>
-                         <option value="">Any Difficulty</option> 
-                         <option value="easy">easy</option>
-                         <option value="medium">medium</option>
-                         <option value="hard">hard</option>
-                     </select>
-                 </div>
-         
-                 <InputRange
-                 maxValue={20}
-                 minValue={0}
-                 value={this.state.value}
-                 onChange={(value)=> {
-                     this.setState({ value });
-                     this.props.dispatch(setDurationRange(value))
-                    }
-                } />
+                
+                <SelectedFilters/>
                  
              </div>
         )

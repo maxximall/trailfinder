@@ -5,14 +5,21 @@
 }
 
 .filters__filter{
-    border: 1px solid #E0E7EE;
+    border: none;
+    background-color: $white-grey;
     border-radius: 5px;
     height: $xl-size;
-    background-color: white;
     color: $blue-grey;
     min-width: 130px;
+    position: relative
 }
-
+.filters__filter:before {
+    content: "\25AE";  /* this is your text. You can also use UTF-8 character codes as I do here */
+   
+    left:-5px;
+    position:absolute;
+    top:0;
+ }
 .filters__block {
     display: inline-block;
     padding: 0 15px 0 15px;
@@ -32,4 +39,14 @@
 }
 input[type=text]{
     padding-left: 10px; 
+}
+.filter-item {
+    font-size: $xm-size;
+    color: $dark;
+}
+select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url(https://fontawesome.com/icons/caret-down?style=solid) 96% / 15% no-repeat #eee;
 }

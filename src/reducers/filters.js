@@ -3,7 +3,7 @@
 const defaultFiltersReducer = {
     location: '',
     duration: '',
-    difficulty: '',
+    difficulty: {easy: true, medium: true, hard: true},
     text: '',
     durationRange: { min: 0, max: 15 }
 }
@@ -34,6 +34,12 @@ const filtersReducer = (state = defaultFiltersReducer, action) => {
             return {
                 ...state,
                 durationRange: action.durationRange
+            }
+        case 'REMOVE_FILTER':
+                console.log(action.filter)
+            return {
+                ...state,
+                [action.filter]: defaultFiltersReducer[action.filter]
             }
         default:
             return state

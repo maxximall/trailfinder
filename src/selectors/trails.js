@@ -1,14 +1,22 @@
 //Return the list of filtered trails
 
 const getFilteredTrails = (trails, filters) => {
+
     return trails.filter((trail)=>{
         const location =  filters.location === '' || trail.location === filters.location;
         const duration =  filters.duration === '' || trail.duration === filters.duration;
-        const difficulty = filters.difficulty === '' ||trail.difficulty === filters.difficulty;      
         const textMatch = trail.name.toLowerCase().includes(filters.text.toLowerCase());        
 
-        return location && duration && difficulty && textMatch && durationRange(trail, filters.durationRange)
+        return location && duration && textMatch && difficultyMatch(trail, filters) && durationRange(trail, filters.durationRange)
     })
+}
+
+const difficultyMatch = (trail, filter) => {
+    for(var x in filter.difficulty){
+        if(filter.difficulty[x] == true && trail.difficulty[x] == filter.difficulty[x]){
+            return true
+        }
+    }
 }
 
 const durationRange = (trail ,filter) => {
@@ -37,8 +45,6 @@ const durationRange = (trail ,filter) => {
     for(let i = filter.min; i <= (filter.max === 20 ? 999 : filter.max); i++){
         filterDuration.push(parseInt(i));
     }
-    console.log('Filter: '+ filterDuration);
-    console.log('Trail: '+ trailDuration);
     
     const result = filterDuration.filter( i => trailDuration.indexOf(i) !== -1);
     return result.length > 0 ? true : false

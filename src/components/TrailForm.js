@@ -83,7 +83,9 @@ export default class TrailForm extends React.Component {
         this.setState(()=>({duration}));
     }
     onDifficultyChange(e){
+        console.log('fired')
         const options = {...this.state.difficulty};
+        console.log(options)
         let option = e.target.value;
         
         this.setState((prevState)=>({difficulty:{
@@ -186,17 +188,15 @@ export default class TrailForm extends React.Component {
                         <option value='months'>months</option>
                     </select>
 
-                    <select value={this.state.difficulty} onChange={this.onDifficultyChange}>
-                        <option value="">Any</option> 
-                        <option value="easy">easy</option>
-                        <option value="medium">medium</option>
-                        <option value="hard">hard</option>
-                    </select>
+                
 
                     <fieldset value={this.state.difficulty} onChange={this.onDifficultyChange}>
-                        <input type="checkbox" value="easy" defaultChecked={this.state.difficulty['easy']}/>
-                        <input type="checkbox" value="medium" defaultChecked={this.state.difficulty['medium']}/>
-                        <input type="checkbox" value="hard" defaultChecked={this.state.difficulty['hard']}/>
+                        <label for="easy" >Easy</label>
+                        <input type="checkbox" name="easy" value="easy" defaultChecked={this.state.difficulty['easy']}/>
+                        <label for="medium">Medium</label>
+                        <input type="checkbox" name="medium" value="medium" defaultChecked={this.state.difficulty['medium']}/>
+                        <label for="hard" >Hard</label>
+                        <input type="checkbox"  name="hard" value="hard" defaultChecked={this.state.difficulty['hard']}/>
                     </fieldset>
                     
 

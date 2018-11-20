@@ -9,7 +9,9 @@ const PublicRoute = ({component: Component, ...rest}) => {
         <Route {...rest} component={(props) => (
               <div>
                 <Header />
-                <Component {...props} />
+                    <div className='container'>
+                        <Component {...props} />
+                    </div>
                 <Footer />
               </div>
         )} />

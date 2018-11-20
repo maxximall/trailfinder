@@ -11,7 +11,7 @@ export const setDuration = (duration = '') => ({
 //SET_DIFFICULTY
 export const setDifficulty = (difficulty = '') => ({
     type: 'SET_DIFFICULTY',
-    difficulty
+    difficulty,
 })
 
 // SET_TEXT_FILTER
@@ -25,3 +25,11 @@ export const setDurationRange = (durationRange = '') => ({
     type: 'SET_DURATION_RANGE',
     durationRange
 });
+
+// REMOVE_FILTER
+
+export const removeFilter = (filter = '', filterValue = '') => ({
+    type: 'REMOVE_FILTER',
+    filter,
+    filterValue
+})
