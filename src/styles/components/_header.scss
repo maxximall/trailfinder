@@ -1,6 +1,5 @@
 .header{
-    background-color: $dark;
-    color: #fff;
+    color: $dark;
     width: 100%;
    
 }
@@ -21,7 +20,7 @@
     display:inline-block;
     height: 35px;
     border-radius: 21px;
-    border: none;
+    border: 1px solid $white-grey;
     float: right;
     margin: 20px 0;
 }

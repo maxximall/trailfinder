@@ -16,8 +16,8 @@ class FiltersList extends React.Component {
     }
     render() {
         return (
-            <div>
-                <div class="dropdown">
+            <div className="filter-list">
+                <div className="dropdown">
                     <a className="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Difficulty
                     </a>
@@ -47,7 +47,7 @@ class FiltersList extends React.Component {
                         </fieldset>
                     </div>
                 </div>
-                <div class="dropdown">
+                <div className="dropdown">
                     <a className="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Length
                     </a>
@@ -78,7 +78,7 @@ class FiltersList extends React.Component {
                  </div>
                  
                 
-                <SelectedFilters/>
+                
                  
              </div>
         )

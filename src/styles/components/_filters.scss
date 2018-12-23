@@ -1,9 +1,17 @@
 .filters{
     max-width: $max-width;
     margin: 30px auto 100px auto;
-    text-align: center
+    text-align: center;
 }
-
+.filter-list{
+    border-top: 1px solid $white-grey;
+    border-bottom: 1px solid $white-grey;
+    margin: 20px 0 40px 0;
+}
+.filter-list .dropdown {
+    display: inline-block;
+    margin: 20px;
+}
 .filters__filter{
     border: none;
     background-color: $white-grey;

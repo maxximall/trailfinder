@@ -4,7 +4,7 @@ import {setTextFilter} from '../actions/filters';
 
 
 const Search = (props) => (
-    <input className=" search-bar" type='text' placeholder="Search" onChange={(e)=>{
+    <input className="search-bar" type='text' placeholder="Search" onChange={(e)=>{
         props.dispatch(setTextFilter(e.target.value))
     }} />
 
