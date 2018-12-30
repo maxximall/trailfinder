@@ -17,10 +17,13 @@
     font-weight: bold;
 }
 .search-bar{
+    content: 'f0c1';
     display:inline-block;
-    height: 35px;
+    height: 40px;
     border-radius: 21px;
     border: 1px solid $white-grey;
     float: right;
     margin: 20px 0;
+    // background: url(../../public/img/search.png) no-repeat scroll -20px -20px;
+    padding-left: 40px
 }
